@@ -452,5 +452,22 @@ https://en.wikipedia.org/wiki/Draft:Microsoft_SQL_Server_Libraries/Drivers
 ";
             TestGfmInGeneral(source, expected);
         }
+
+        [Fact]
+        [Trait("Related", "Markdown")]
+        public void TestCodeInList()
+        {
+            var source = @"1. some text
+    ```
+    --
+    ```";
+
+            var expected = @"<ol>
+<li>some text<pre><code> --
+</code></pre></li>
+</ol>
+";
+            TestGfmInGeneral(source, expected);
+        }
     }
 }
